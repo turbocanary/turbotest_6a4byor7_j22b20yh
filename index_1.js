@@ -1,6 +1,8 @@
+const crypto = require('crypto');
+
 function anotherInsecurePassword() {
-  // BAD: the random suffix is not  secure
-  var suffix = Math.random();
+  // GOOD: use cryptographically secure random bytes for security-sensitive values
+  var suffix = crypto.randomBytes(16).toString('hex');
   var password = "sssAAAA" + suffix;
   return password;
 }
